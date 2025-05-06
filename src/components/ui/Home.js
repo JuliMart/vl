@@ -1,5 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {
+  FaUsers,
+  FaMapMarkedAlt,
+  FaHeadset,
+  FaStore,
+  FaUniversity,
+  FaFilm,
+  FaBus,
+  FaChalkboardTeacher
+} from "react-icons/fa";
+import ProductosDestacados from "../products/ProductosDestacados";
+
+const areas = [
+    { icon: <FaStore size={32} />, label: "Retail", path: "/retail" },
+    { icon: <FaUniversity size={32} />, label: "Educación", path: "/educacion" },
+    { icon: <FaFilm size={32} />, label: "Entretenimiento", path: "/entretenimiento" },
+    { icon: <FaBus size={32} />, label: "Transporte", path: "/transporte" },
+    { icon: <FaChalkboardTeacher size={32} />, label: "Control", path: "/salas" },
+  ];
+  
 
 const Home = () => {
   return (
@@ -24,77 +44,50 @@ const Home = () => {
       </section>
 
       {/* CONFIANZA */}
-      <section className="py-16 px-6 text-center">
-        <h2 className="text-3xl font-bold mb-8">+17 AÑOS DE EXPERIENCIA</h2>
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div>
-            <h3 className="text-xl font-semibold mb-2">250+ Clientes Satisfechos</h3>
-            <p className="text-gray-400">Confían en nuestra tecnología</p>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold mb-2">Presencia LATAM</h3>
-            <p className="text-gray-400">Argentina, Chile, Perú, Uruguay</p>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold mb-2">Soporte Personalizado</h3>
-            <p className="text-gray-400">Garantía escrita y asistencia continua</p>
+      <section className="bg-black text-white py-20">
+        <div className="max-w-6xl mx-auto text-center space-y-12">
+          <h2 className="text-4xl font-extrabold">+17 AÑOS DE EXPERIENCIA</h2>
+          <div className="grid md:grid-cols-3 gap-12 px-6">
+            <div className="flex flex-col items-center space-y-4">
+              <FaUsers className="text-cyan-400 text-5xl" />
+              <h3 className="text-xl font-semibold">250+ Clientes Satisfechos</h3>
+              <p className="text-gray-400">Confían en nuestra tecnología</p>
+            </div>
+            <div className="flex flex-col items-center space-y-4">
+              <FaMapMarkedAlt className="text-cyan-400 text-5xl" />
+              <h3 className="text-xl font-semibold">Presencia LATAM</h3>
+              <p className="text-gray-400">Argentina, Chile, Perú, Uruguay</p>
+            </div>
+            <div className="flex flex-col items-center space-y-4">
+              <FaHeadset className="text-cyan-400 text-5xl" />
+              <h3 className="text-xl font-semibold">Soporte Personalizado</h3>
+              <p className="text-gray-400">Garantía escrita y asistencia continua</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* VERTICALES */}
-      <section className="py-16 px-6 bg-gray-900">
-        <h2 className="text-3xl font-bold text-center mb-10">Áreas de Aplicación</h2>
-        <div className="grid md:grid-cols-5 gap-6 max-w-6xl mx-auto text-center">
-          {[
-            "Retail",
-            "Educación",
-            "Entretenimiento",
-            "Transporte",
-            "Control y Sala de Reunión",
-          ].map((item, i) => (
-            <div key={i} className="bg-black border border-gray-700 rounded-lg p-4">
-              <p className="font-semibold">{item}</p>
-            </div>
-          ))}
+      {/* AREAS DE APLICACION */}
+      <section className="bg-[#0e1625] py-16 text-white text-center">
+        <h2 className="text-3xl font-bold mb-10">Áreas de Aplicación</h2>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 px-6">
+            {areas.map((area, idx) => (
+            <Link
+                key={idx}
+                to={area.path}
+                className="bg-black rounded-lg py-6 px-4 flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-transform hover:text-cyan-400"
+            >
+                {area.icon}
+                <span className="mt-4 font-semibold text-lg">{area.label}</span>
+            </Link>
+            ))}
         </div>
-        <div className="text-center mt-10">
-          <Link
-            to="/soluciones"
-            className="text-cyan-400 underline hover:text-cyan-300"
-          >
-            Ver todas las soluciones
-          </Link>
-        </div>
-      </section>
+        </section>
+
 
       {/* PRODUCTOS DESTACADOS */}
-      <section className="py-16 px-6">
-        <h2 className="text-3xl font-bold text-center mb-10">Productos Destacados</h2>
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {["X-WALL PLUS", "HD SERIES", "OLED TRANSPARENTE"].map((title, i) => (
-            <div
-              key={i}
-              className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition"
-            >
-              <img
-                src={`/assets/products/home_${i + 1}.jpg`}
-                alt={title}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-4">
-                <h3 className="text-xl font-bold mb-2">{title}</h3>
-                <Link
-                  to="/equipamiento"
-                  className="text-cyan-400 hover:underline"
-                >
-                  Ver detalles
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <ProductosDestacados/>
+
 
       {/* CTA CONTACTO */}
       <section className="py-16 px-6 bg-green-900 text-white text-center">

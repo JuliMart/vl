@@ -1,77 +1,72 @@
 import React from "react";
-import {FaLinkedin } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <footer className="bg-black text-gray-400 px-10 py-8">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start justify-between gap-10">
         {/* Logo + Info */}
-        <div className="flex items-center gap-4">
-        <Link to='/'>
-        <img    
-            src="/assets/viewled-logoblanco.png"
-            alt="Logo Viewled"
-            className="w-48 h-48 object-contain"
+        <div className="flex items-start gap-4">
+          <Link to="/">
+            <img
+              src="/assets/viewled-logoblanco.png"
+              alt="Logo Viewled"
+              className="w-48 h-48 object-contain"
             />
-            </Link>
-          <div>
-            <p className="font-bold">Viewled Argentina</p>
+          </Link>
+          <div className="text-sm">
+            <p className="font-bold text-white">Viewled Argentina</p>
             <p>Bernardo de Irigoyen 722 3A - CABA - Argentina</p>
           </div>
         </div>
-         {/* Middle Sections */}
-         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm">
+
+        {/* Middle Sections */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm">
+          {/* Servicio */}
           <div>
             <h3 className="font-bold text-white mb-2">SERVICIO</h3>
             <ul className="space-y-1">
-              <li><a href="#">Branding</a></li>
-              <li><a href="#">Diseño</a></li>
-              <li><a href="#">Marketing</a></li>
-              <li><a href="#">Publicidad</a></li>
+              <li><span className="cursor-default">Branding</span></li>
+              <li><span className="cursor-default">Diseño</span></li>
+              <li><span className="cursor-default">Marketing</span></li>
+              <li><span className="cursor-default">Publicidad</span></li>
             </ul>
           </div>
+
+          {/* Empresa */}
           <div>
             <h3 className="font-bold text-white mb-2">EMPRESA</h3>
             <ul className="space-y-1">
-                <li>
-                <Link to="/nosotros" className="hover:text-cyan-400 transition">
-                    Nosotros
-                </Link>
-                </li>
-                <li>
-                <Link to="/contacto" className="hover:text-cyan-400 transition">
-                    Contacto
-                </Link>
-                </li>
-                <li><a href="#">Trabajos</a></li>
-                <li><a href="#">Prensa</a></li>
+              <li><Link to="/nosotros" className="hover:text-cyan-400 transition">Nosotros</Link></li>
+              <li><Link to="/contacto" className="hover:text-cyan-400 transition">Contacto</Link></li>
+              <li><Link to="/prensa" className="hover:text-cyan-400 transition">Prensa</Link></li>
             </ul>
-            </div>
+          </div>
 
+          {/* Legal */}
           <div>
             <h3 className="font-bold text-white mb-2">LEGAL</h3>
             <ul className="space-y-1">
-              <li><a href="#">Términos de uso</a></li>
-              <li><a href="#">Política de privacidad</a></li>
-              <li><a href="#">Política de cookies</a></li>
+              <li><span className="cursor-default">Términos de uso</span></li>
+              <li><span className="cursor-default">Política de privacidad</span></li>
+              <li><span className="cursor-default">Política de cookies</span></li>
             </ul>
           </div>
         </div>
+
         {/* Redes Sociales */}
-        <nav className="flex gap-4 md:place-self-center md:justify-self-end text-white text-xl">
-          
-                    <a   
-            href="https://www.linkedin.com/company/viewled" 
-            aria-label="Linkedin" 
-            className="hover:text-cyan-400 transition"
+        <div className="md:place-self-center md:justify-self-end mt-6 md:mt-0">
+          <a
+            href="https://www.linkedin.com/company/viewled"
+            aria-label="LinkedIn"
+            className="hover:text-cyan-400 transition inline-block"
             target="_blank"
             rel="noopener noreferrer"
-            >
-            <FaLinkedin className="text-5xl" />
-            </a>
-          
-        </nav>
+          >
+            <FaLinkedin className="text-4xl" />
+          </a>
+        </div>
       </div>
 
       {/* Copyright */}

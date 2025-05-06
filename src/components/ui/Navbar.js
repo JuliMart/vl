@@ -120,11 +120,11 @@ const Navbar = () => {
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="w-[80%] max-w-xs bg-black text-white px-6 py-4 space-y-2 text-sm font-semibold rounded-br-xl shadow-lg">
-          <a href="#seccion1" className="block hover:text-cyan-400" onClick={closeMenu}>Sección 1</a>
-          <a href="#seccion2" className="block hover:text-cyan-400" onClick={closeMenu}>Sección 2</a>
-          <a href="#seccion3" className="block hover:text-cyan-400" onClick={closeMenu}>Sección 3</a>
-          <a href="#contacto" className="block hover:text-cyan-400" onClick={closeMenu}>Contacto</a>
+        <div className="w-[90%] max-w-xs bg-black text-white px-6 py-4 space-y-2 text-sm font-semibold rounded-br-xl shadow-lg">
+          <a href="/nosotros" className="block hover:text-cyan-400" onClick={closeMenu}>Nosotros</a>
+          <a href="/soluciones" className="block hover:text-cyan-400" onClick={closeMenu}>Soluciones</a>
+          <a href="/equipamiento" className="block hover:text-cyan-400" onClick={closeMenu}>Equipamiento</a>
+          <a href="/contacto" className="block hover:text-cyan-400" onClick={closeMenu}>Contacto</a>
           <button
             className="w-full bg-white text-black px-3 py-1 rounded hover:bg-cyan-400 hover:text-white"
             onClick={closeMenu}

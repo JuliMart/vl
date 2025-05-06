@@ -4,8 +4,12 @@ import { FaHistory, FaBullseye, FaEye } from "react-icons/fa";
 
 const Nosotros = () => {
   return (
-    <section className="bg-gray-900 text-white py-20 px-6">
-      <div className="max-w-5xl mx-auto space-y-16">
+    <section
+    className="relative bg-gray-900 text-white py-20 px-6 bg-cover bg-center"
+    style={{ backgroundImage: "url(/assets/pexels.jpg)" }}
+  >
+    <div className="absolute inset-0 bg-black opacity-60"></div> {/* Capa oscura para mejorar la legibilidad */}
+    <div className="relative max-w-5xl mx-auto space-y-16">
         {/* Historia */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}

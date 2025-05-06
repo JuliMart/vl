@@ -10,8 +10,12 @@ import Contacto from './components/ui/Contacto';
 import Soluciones from './components/ui/Soluciones';
 import Equipamiento from './components/ui/Equipamiento';
 import Home from './components/ui/Home';
-
-
+import Prensa from './components/ui/Prensa';
+import Retail from './components/ui/Retail';
+import Educacion from './components/ui/Educacion';
+import Entretenimiento from './components/ui/Entretenimiento';
+import Transporte from './components/ui/Transporte';
+import Salas from './components/ui/Salas';
 
 function App() {
   return (
@@ -26,6 +30,15 @@ function App() {
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/soluciones" element={<Soluciones />} />
           <Route path="/equipamiento" element={<Equipamiento />} />
+          <Route path="/prensa" element={<Prensa />} />
+          <Route path="/retail" element={<Retail />} />
+          <Route path="/educacion" element={<Educacion />} />
+          <Route path="/entretenimiento" element={<Entretenimiento />} />
+          <Route path="/transporte" element={<Transporte />} />
+          <Route path="/salas" element={<Salas />} />
+
+
+
           <Route path="/" element={<Home />} />
 
         </Routes>
