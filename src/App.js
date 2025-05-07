@@ -16,14 +16,16 @@ import Educacion from './components/ui/Educacion';
 import Entretenimiento from './components/ui/Entretenimiento';
 import Transporte from './components/ui/Transporte';
 import Salas from './components/ui/Salas';
+import WhatsAppButton from './components/ui/WhatsappButton';
+
 
 function App() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <ScrollToTop />
-      <div className="flex-1">
-        <Routes>
+      <div className="flex-1 pt-20">
+      <Routes>
           <Route path="/crear-usuario" element={<CreateUser />} />
           <Route path="/login" element={<Login />} />
           <Route path="/nosotros" element={<Nosotros />} />
@@ -43,7 +45,7 @@ function App() {
 
         </Routes>
       </div>
-
+      <WhatsAppButton/>
       <Footer />
     </div>
   );

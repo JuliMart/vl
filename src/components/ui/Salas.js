@@ -13,7 +13,7 @@ const Salas = () => {
           </p>
         </div>
         <div className="rounded-lg overflow-hidden shadow-lg">
-          <img src="/assets/canva.jpg" alt="Salas de Reunión" className="w-full h-96 object-cover" />
+          <img src="/assets/corp.jpg" alt="Salas de Reunión" className="w-full h-96 object-cover" />
         </div>
         <div className="grid md:grid-cols-2 gap-8">
           <div className="space-y-4">
@@ -28,7 +28,7 @@ const Salas = () => {
             </ul>
           </div>
           <div className="rounded-lg overflow-hidden shadow-md">
-            <img src="/assets/meet.jpg" alt="Pantallas Sala" className="w-full h-full object-cover" />
+            <img src="/assets/salacontrol.avif" alt="Pantallas Sala" className="w-full h-full object-cover" />
           </div>
         </div>
         <div className="text-center mt-10">

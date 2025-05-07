@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 
 const Contacto = () => {
   const [formData, setFormData] = useState({
@@ -18,23 +19,51 @@ const Contacto = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Formulario enviado:", formData);
-    // Aquí puedes integrar con una API o servicio de envío
+    // Aquí puedes integrar una API como EmailJS o Formspree
   };
 
   return (
-    <section className="bg-white text-gray-800 px-6 py-12">
-      <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
+    <section className="bg-white text-gray-800 px-6 py-16">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
         {/* Información de contacto */}
-        <div>
-          <h2 className="text-3xl font-bold text-cyan-700 mb-4">Contáctanos</h2>
-          <p className="mb-4">¿Tienes una consulta? Estamos para ayudarte.</p>
-          <p className="mb-2"><strong>Email:</strong> contacto@viewled.com.ar</p>
-          <p className="mb-2"><strong>Teléfono:</strong> +54 9 221 4207919</p>
-          <p className="mb-2"><strong>Ubicación:</strong> Bernardo de Irigoyen 722 3A - CABA - Buenos Aires, Argentina</p>
+        <div className="space-y-6">
+          <h2 className="text-4xl font-extrabold text-cyan-600 mb-4">Contáctanos</h2>
+          <p className="text-lg text-gray-600">
+            ¿Tienes una consulta o querés cotizar un proyecto? Estamos para ayudarte.
+          </p>
+
+          <div className="space-y-4 text-gray-700 text-base">
+            <div className="flex items-center gap-3">
+              <FaEnvelope className="text-cyan-600" />
+              <span><strong>Email:</strong> contacto@viewled.com.ar</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <FaPhoneAlt className="text-cyan-600" />
+              <span><strong>Teléfono:</strong> +54 9 221 4207919</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <FaMapMarkerAlt className="text-cyan-600" />
+              <span>
+                <strong>Ubicación:</strong> Bernardo de Irigoyen 722 3A, CABA - Buenos Aires, Argentina
+              </span>
+            </div>
+          </div>
+
+          <a
+            href="https://www.google.com/maps?q=Bernardo+de+Irigoyen+722,+Buenos+Aires,+Argentina"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-6 bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-2 rounded-md transition"
+          >
+            Ver en Google Maps
+          </a>
         </div>
 
-        {/* Formulario */}
-        <form onSubmit={handleSubmit} className="space-y-4 bg-gray-50 p-6 rounded-lg shadow-lg">
+        {/* Formulario de contacto */}
+        <form
+          onSubmit={handleSubmit}
+          className="bg-gray-50 p-8 rounded-xl shadow-xl space-y-4"
+        >
           <input
             type="text"
             name="nombre"
@@ -42,7 +71,7 @@ const Contacto = () => {
             value={formData.nombre}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md"
+            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
           />
           <input
             type="email"
@@ -51,7 +80,7 @@ const Contacto = () => {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md"
+            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
           />
           <input
             type="tel"
@@ -59,7 +88,7 @@ const Contacto = () => {
             placeholder="Teléfono"
             value={formData.telefono}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md"
+            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
           />
           <textarea
             name="mensaje"
@@ -67,13 +96,13 @@ const Contacto = () => {
             value={formData.mensaje}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md h-32 resize-none"
+            className="w-full px-4 py-3 border border-gray-300 rounded-md h-32 resize-none focus:outline-none focus:ring-2 focus:ring-cyan-400"
           />
           <button
             type="submit"
-            className="w-full bg-cyan-600 text-white py-2 rounded-md hover:bg-cyan-700 transition"
+            className="w-full bg-cyan-600 hover:bg-cyan-700 text-white py-3 rounded-md transition font-semibold"
           >
-            Enviar
+            Enviar Mensaje
           </button>
         </form>
       </div>
