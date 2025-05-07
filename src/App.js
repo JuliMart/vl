@@ -17,6 +17,7 @@ import Entretenimiento from './components/ui/Entretenimiento';
 import Transporte from './components/ui/Transporte';
 import Salas from './components/ui/Salas';
 import WhatsAppButton from './components/ui/WhatsappButton';
+import IAInstallSim from './components/ui/IAInstallSim';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <Route path="/entretenimiento" element={<Entretenimiento />} />
           <Route path="/transporte" element={<Transporte />} />
           <Route path="/salas" element={<Salas />} />
+          <Route path="/simulation" element={<IAInstallSim />} />
 
 
 
