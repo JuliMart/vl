@@ -1,157 +1,144 @@
 // Home.js
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  FaUsers,
-  FaMapMarkedAlt,
-  FaHeadset,
-  FaStore,
-  FaUniversity,
-  FaFilm,
-  FaBus,
-  FaChalkboardTeacher,
-} from "react-icons/fa";
-import ProductosDestacados from "../products/ProductosDestacados";
 import { motion } from "framer-motion";
+import { FaCode, FaMobileAlt, FaCloud } from "react-icons/fa";
+import { useTranslation, Trans } from "react-i18next";
 
-const areas = [
-  { icon: <FaStore size={32} />, label: "Retail", path: "/retail" },
-  { icon: <FaUniversity size={32} />, label: "Educación", path: "/educacion" },
-  { icon: <FaFilm size={32} />, label: "Entretenimiento", path: "/entretenimiento" },
-  { icon: <FaBus size={32} />, label: "Transporte", path: "/transporte" },
-  { icon: <FaChalkboardTeacher size={32} />, label: "Control", path: "/salas" },
-];
+
 
 const Home = () => {
+  const { t } = useTranslation();
+
+  const ServicesPreview = [
+    {
+      icon: <FaCode size={40} />,
+      title: t("home.service_custom.title"),
+      desc: t("home.service_custom.desc"),
+    },
+    {
+      icon: <FaMobileAlt size={40} />,
+      title: t("home.service_mobile.title"),
+      desc: t("home.service_mobile.desc"),
+    },
+    {
+      icon: <FaCloud size={40} />,
+      title: t("home.service_cloud.title"),
+      desc: t("home.service_cloud.desc"),
+    },
+  ];
+
   return (
-    <main className="bg-black text-white">
+    <main className="bg-brand-dark text-brand-text font-sans">
       {/* HERO SECTION */}
-      <motion.section
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="h-[80vh] bg-cover bg-center flex items-center justify-center text-center px-6"
-        style={{ backgroundImage: "url(/assets/viewhome.jpg)" }}
-      >
-        <div className="bg-black bg-opacity-60 p-8 rounded-xl">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Abstract Background */}
+        <div className="absolute inset-0 bg-brand-dark">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-surface to-brand-dark opacity-50"></div>
+        </div>
+
+        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-4xl md:text-6xl font-extrabold mb-4"
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-7xl font-bold tracking-tight mb-6"
           >
-            REALIDAD LED
+            {/* Interpolation handled by i18next but we need to pass components if we used <Trans> or just dangerouslySetInnerHTML if we trusted it, 
+                 but simple t() returns string. For rich text we use Trans. 
+                 Let's stick to simple t() for now or use Trans for the <span className="text-brand-accent"> part. 
+                 Actually, my translation.json has <1>Future</1>. I need Trans component.
+             */}
+            <Trans i18nKey="home.hero_title" components={{ 1: <span className="text-brand-accent" /> }} />
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="text-lg md:text-xl mb-6"
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="text-xl md:text-2xl text-brand-muted mb-10 font-light"
           >
-            Transformamos espacios con tecnología visual de vanguardia
+            {t("home.hero_subtitle")}
           </motion.p>
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
           >
             <Link
-              to="/soluciones"
-              className="inline-block bg-cyan-500 hover:bg-cyan-400 text-white font-semibold px-6 py-3 rounded-md transition"
+              to="/contacto"
+              className="inline-block border border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-white px-8 py-3 rounded-full font-medium transition duration-300"
             >
-              Ver Soluciones
+              {t("home.start_project")}
             </Link>
           </motion.div>
         </div>
-      </motion.section>
+      </section>
 
-      {/* CONFIANZA */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-        className="bg-black text-white py-20"
-      >
-        <div className="max-w-6xl mx-auto text-center space-y-12">
-          <h2 className="text-4xl font-extrabold">+17 AÑOS DE EXPERIENCIA</h2>
-          <div className="grid md:grid-cols-3 gap-12 px-6">
-            {[FaUsers, FaMapMarkedAlt, FaHeadset].map((Icon, idx) => (
+      {/* SERVICES PREVIEW */}
+      <section className="py-24 px-6 bg-brand-surface">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold mb-4">{t("home.services_title")}</h2>
+            <div className="w-20 h-1 bg-brand-accent mx-auto"></div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-12">
+            {ServicesPreview.map((service, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.2 }}
                 viewport={{ once: true }}
-                className="flex flex-col items-center space-y-4"
+                className="bg-brand-dark p-8 rounded-lg border border-gray-800 hover:border-brand-accent transition duration-300"
               >
-                <Icon className="text-cyan-400 text-5xl" />
-                <h3 className="text-xl font-semibold">
-                  {idx === 0 && "250+ Clientes Satisfechos"}
-                  {idx === 1 && "Presencia LATAM"}
-                  {idx === 2 && "Soporte Personalizado"}
-                </h3>
-                <p className="text-gray-400">
-                  {idx === 0 && "Confían en nuestra tecnología"}
-                  {idx === 1 && "Argentina, Chile, Perú, Uruguay"}
-                  {idx === 2 && "Garantía escrita y asistencia continua"}
-                </p>
+                <div className="text-brand-accent mb-6">{service.icon}</div>
+                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                <p className="text-brand-muted leading-relaxed">{service.desc}</p>
               </motion.div>
             ))}
           </div>
+          <div className="text-center mt-12">
+            <Link to="/services" className="text-brand-accent hover:text-white font-medium transition border-b border-brand-accent pb-1">{t("home.view_all_services")}</Link>
+          </div>
         </div>
-      </motion.section>
+      </section>
 
-      {/* AREAS DE APLICACION */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-        className="bg-[#0e1625] py-16 text-white text-center"
-      >
-        <h2 className="text-3xl font-bold mb-10">Áreas de Aplicación</h2>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 px-6">
-          {areas.map((area, idx) => (
-            <motion.div
-              key={idx}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
+      {/* TRUST / STATS */}
+      <section className="py-20 px-6 border-t border-gray-900">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-2xl font-semibold mb-12 tracking-wide text-brand-muted">{t("home.trusted_by")}</h2>
+          <div className="flex flex-wrap justify-center gap-16 transition duration-500">
+            {/* ViewLed Logo */}
+            <a
+              href="https://viewled.com.ar"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition duration-300"
             >
-              <Link
-                to={area.path}
-                className="bg-black rounded-lg py-6 px-4 flex flex-col items-center justify-center shadow-lg hover:text-cyan-400"
-              >
-                {area.icon}
-                <span className="mt-4 font-semibold text-lg">{area.label}</span>
-              </Link>
-            </motion.div>
-          ))}
+              <img
+                src="/assets/viewled-logo-v2.png"
+                alt="ViewLed"
+                className="h-16 w-auto object-contain transition duration-300 brightness-200 invert"
+              />
+            </a>
+          </div>
         </div>
-      </motion.section>
+      </section>
 
-      {/* PRODUCTOS DESTACADOS */}
-      <ProductosDestacados />
-
-      {/* CTA CONTACTO */}
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="py-16 px-6 bg-green-900 text-white text-center"
-      >
-        <h2 className="text-3xl font-bold mb-4">
-          ¡Listo para transformar tu espacio?
-        </h2>
-        <p className="mb-6">Solicitá una propuesta personalizada para tu proyecto</p>
+      {/* CTA SECTION */}
+      <section className="py-24 px-6 text-center">
+        <h2 className="text-4xl font-bold mb-6">{t("home.ready_to_scale")}</h2>
+        <p className="text-brand-muted mb-8 max-w-2xl mx-auto">
+          {t("home.ready_desc")}
+        </p>
         <Link
           to="/contacto"
-          className="inline-block bg-white text-black font-semibold px-8 py-3 rounded-md hover:bg-gray-200 transition"
+          className="bg-brand-text text-brand-dark px-8 py-3 rounded-md font-bold hover:bg-gray-200 transition"
         >
-          Contactanos
+          {t("home.get_in_touch")}
         </Link>
-      </motion.section>
+      </section>
     </main>
   );
 };

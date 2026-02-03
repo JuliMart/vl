@@ -1,136 +1,117 @@
-import React, { useState, useRef, useEffect } from "react";
-import {
-  FaUserCircle,
-  FaBars,
-  FaTimes,
-} from "react-icons/fa";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [showUserMenu, setShowUserMenu] = useState(false);
-  const menuRef = useRef(null);
-  const userMenuRef = useRef(null);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const { t, i18n } = useTranslation();
 
-  const closeMenu = () => setIsOpen(false);
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-      if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
-        setShowUserMenu(false);
-      }
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navLinks = [
+    { name: t("navbar.services"), path: "/services" },
+    { name: t("navbar.about"), path: "/nosotros" },
+    { name: t("navbar.contact"), path: "/contacto" },
+  ];
+
   return (
-  <header className="fixed top-0 left-0 w-full bg-black text-white shadow-md z-50">
-<div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-6 min-h-[100px]">
-{/* Izquierda: Logo */}
-        <div className="flex items-center gap-2">
-          <div className="block md:hidden">
-            <button className="text-2xl" onClick={() => setIsOpen(!isOpen)} aria-label="Menú">
-              {isOpen ? <FaTimes /> : <FaBars />}
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled || location.pathname !== "/"
+        ? "bg-brand-dark/95 backdrop-blur-sm shadow-md py-4"
+        : "bg-transparent py-6"
+        }`}
+    >
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6">
+        {/* Logo */}
+        <Link to="/" className="text-2xl md:text-3xl font-bold tracking-tighter text-white">
+          da<span className="text-brand-accent">Code</span>
+        </Link>
+
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex gap-8 items-center">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.path}
+              className="text-sm font-medium text-brand-text hover:text-brand-accent transition-colors tracking-wide uppercase"
+            >
+              {link.name}
+            </Link>
+          ))}
+
+          {/* Language Switcher */}
+          <div className="flex gap-2 ml-4 border-l border-gray-700 pl-4">
+            <button
+              onClick={() => changeLanguage('es')}
+              className={`text-sm font-medium transition-colors ${i18n.language === 'es' ? 'text-brand-accent' : 'text-brand-muted hover:text-white'}`}
+            >
+              ES
+            </button>
+            <span className="text-brand-muted">/</span>
+            <button
+              onClick={() => changeLanguage('en')}
+              className={`text-sm font-medium transition-colors ${i18n.language === 'en' ? 'text-brand-accent' : 'text-brand-muted hover:text-white'}`}
+            >
+              EN
             </button>
           </div>
-          <Link to="/">
-            <img src="/assets/view-logo.jpg" alt="Logo ViewLED"     className="w-40 md:w-64 cursor-pointer"/>
-          </Link>
-        </div>
+        </nav>
 
-        {/* Centro: Navegación */}
-        <div className="hidden md:flex gap-6 text-sm">
-          <Link to="/nosotros" className="hover:text-cyan-400 transition">
-            NOSOTROS
-          </Link>
-          <Link to="/soluciones" className="hover:text-cyan-400 transition">
-            SOLUCIONES
-          </Link>
-          <Link to="/equipamiento" className="hover:text-cyan-400 transition">
-            EQUIPAMIENTO
-          </Link>
-          <Link to="/contacto" className="hover:text-cyan-400 transition">
-            CONTACTO
-          </Link>
-          {/* Puedes agregar más enlaces aquí si quieres */}
-        </div>
-        {/* Derecha: iconos */}
-        <div className="flex items-center gap-4 text-xl md:text-2xl relative">
-          {/*<FaRegCommentDots className="cursor-pointer hover:text-cyan-400" title="Contacto" />*/}
-          {/*<FaQuestionCircle className="cursor-pointer hover:text-cyan-400" title="Ayuda" />*/}
-          {/* Menú perfil */}
-          <div className="relative" ref={userMenuRef}>
-            <FaUserCircle
-              className="cursor-pointer hover:text-cyan-400"
-              title="Perfil"
-              onClick={() => setShowUserMenu(true)}
-            />
-
-            {showUserMenu && (
-              <div
-                className="absolute top-10 right-2 z-50 w-[90vw] max-w-md bg-white text-black shadow-xl rounded-lg p-6 flex flex-col md:flex-row border border-gray-300"
-              >
-                {/* Botón cerrar solo en móvil */}
-                <button
-                  className="absolute top-2 right-2 text-black text-xl md:hidden"
-                  onClick={() => setShowUserMenu(false)}
-                >
-                  ✖
-                </button>
-
-                {/* Clientes nuevos */}
-                <div className="md:w-1/2 md:border-r md:pr-4 mb-4 md:mb-0">
-                  <h3 className="font-bold mb-2">Clientes nuevos</h3>
-                  <p className="text-sm">¿Eres nuevo en ViewLED? Crea una cuenta para comenzar.</p>
-                  <Link
-                    to="/crear-usuario"
-                    className="text-cyan-700 text-sm mt-2 inline-block hover:underline"
-                    onClick={() => setShowUserMenu(false)}
-                  >
-                    Crear cuenta
-                  </Link>
-                </div>
-
-                {/* Usuarios registrados */}
-                <div className="md:w-1/2 md:pl-4">
-                  <h3 className="font-bold mb-2">Usuarios registrados</h3>
-                  <p className="text-sm">¿Ya tienes una cuenta?</p>
-                  <Link
-                    to="/login"
-                    className="text-cyan-700 text-sm mt-2 inline-block hover:underline"
-                    onClick={() => setShowUserMenu(false)}
-                  >
-                    Iniciar sesión
-                  </Link>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-white text-2xl"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Menu"
+        >
+          {isOpen ? <FaTimes /> : <FaBars />}
+        </button>
       </div>
 
-      {/* Menú móvil lateral */}
+      {/* Mobile Nav */}
       <div
-        ref={menuRef}
-        className={`absolute top-full left-0 md:hidden transition-all duration-300 overflow-hidden ${
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        }`}
+        className={`absolute top-full left-0 w-full bg-brand-dark shadow-xl transition-all duration-300 overflow-hidden ${isOpen ? "max-h-80" : "max-h-0"
+          }`}
       >
-        <div className="w-[90%] max-w-xs bg-black text-white px-6 py-4 space-y-2 text-sm font-semibold rounded-br-xl shadow-lg">
-          <a href="/nosotros" className="block hover:text-cyan-400" onClick={closeMenu}>Nosotros</a>
-          <a href="/soluciones" className="block hover:text-cyan-400" onClick={closeMenu}>Soluciones</a>
-          <a href="/equipamiento" className="block hover:text-cyan-400" onClick={closeMenu}>Equipamiento</a>
-          <a href="/contacto" className="block hover:text-cyan-400" onClick={closeMenu}>Contacto</a>
-          <button
-            className="w-full bg-white text-black px-3 py-1 rounded hover:bg-cyan-400 hover:text-white"
-            onClick={closeMenu}
-          >
-            Log In
-          </button>
+        <div className="flex flex-col items-center py-6 space-y-4">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.path}
+              className="text-brand-text hover:text-brand-accent text-lg font-medium"
+              onClick={() => setIsOpen(false)}
+            >
+              {link.name}
+            </Link>
+          ))}
+
+          {/* Mobile Language Switcher */}
+          <div className="flex gap-4 mt-4 pt-4 border-t border-gray-800 w-full justify-center">
+            <button
+              onClick={() => { changeLanguage('es'); setIsOpen(false); }}
+              className={`text-lg font-medium ${i18n.language === 'es' ? 'text-brand-accent' : 'text-brand-muted'}`}
+            >
+              ESPAÑOL
+            </button>
+            <button
+              onClick={() => { changeLanguage('en'); setIsOpen(false); }}
+              className={`text-lg font-medium ${i18n.language === 'en' ? 'text-brand-accent' : 'text-brand-muted'}`}
+            >
+              ENGLISH
+            </button>
+          </div>
         </div>
       </div>
     </header>
