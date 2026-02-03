@@ -1,4 +1,0 @@
-gradio
-diffusers
-torch
-transformers

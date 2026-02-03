@@ -1,0 +1,91 @@
+{
+    "navbar": {
+        "services": "Servicios",
+        "about": "Nosotros",
+        "contact": "Contacto",
+        "menu": "Menú"
+    },
+    "home": {
+        "hero_title": "Diseñando el <1>Futuro</1>",
+        "hero_subtitle": "Soluciones de Software Sobrias, Elegantes y Precisas.",
+        "start_project": "Iniciar Proyecto",
+        "services_title": "Nuestra Experiencia",
+        "view_all_services": "Ver Todos los Servicios",
+        "trusted_by": "CONFIADO POR INNOVADORES",
+        "ready_to_scale": "¿Listo para escalar?",
+        "ready_desc": "Construyamos software que importe. Ingeniería de precisión para desafíos complejos.",
+        "get_in_touch": "Contáctanos",
+        "service_custom": {
+            "title": "Desarrollo a Medida",
+            "desc": "Soluciones de software personalizadas construidas con precisión y escalabilidad en mente."
+        },
+        "service_mobile": {
+            "title": "Apps Móviles",
+            "desc": "Experiencias móviles nativas y multiplataforma fluidas para iOS y Android."
+        },
+        "service_cloud": {
+            "title": "Infraestructura Cloud",
+            "desc": "Arquitecturas en la nube seguras, confiables y de alto rendimiento."
+        }
+    },
+    "services": {
+        "title": "Nuestros Servicios",
+        "subtitle": "Soluciones tecnológicas integrales entregadas con precisión y elegancia.",
+        "learn_more": "Ver Más →",
+        "custom_dev": {
+            "title": "Desarrollo de Software a Medida",
+            "desc": "Construimos soluciones de software personalizadas que se alinean perfectamente con sus objetivos comerciales. Desde el concepto hasta el despliegue, garantizamos escalabilidad y rendimiento."
+        },
+        "mobile_dev": {
+            "title": "Desarrollo de Aplicaciones Móviles",
+            "desc": "Apps móviles nativas y multiplataforma diseñadas para una experiencia de usuario y compromiso óptimos en dispositivos iOS y Android."
+        },
+        "cloud_dev": {
+            "title": "Infraestructura Cloud & DevOps",
+            "desc": "Soluciones en la nube seguras, escalables y rentables. Nos encargamos de la migración, arquitectura y gestión continua."
+        },
+        "consulting": {
+            "title": "Consultoría IT & Estrategia",
+            "desc": "Orientación experta sobre transformación digital, selección de stack tecnológico y optimización de procesos."
+        },
+        "ux_ui": {
+            "title": "Diseño UX/UI",
+            "desc": "Diseño centrado en el usuario que combina estética con funcionalidad para crear productos digitales intuitivos."
+        }
+    },
+    "about": {
+        "title": "Sobre daCode",
+        "story_title": "Nuestra Historia",
+        "story_desc": "Fundada con pasión por la ingeniería de precisión, <1>daCode</1> ha evolucionado hasta convertirse en una firma de desarrollo de software de primer nivel. Nos especializamos en construir soluciones digitales robustas, escalables y elegantes para empresas con visión de futuro.",
+        "mission_title": "Nuestra Misión",
+        "mission_desc": "Entregar software que no sea solo funcional, sino excepcional. Nos esforzamos por la calidad del código, la integridad arquitectónica y experiencias de usuario que se sientan fluidas y refinadas.",
+        "vision_title": "Nuestra Visión",
+        "vision_desc": "Ser el estandarte de la excelencia en ingeniería en la industria del software, demostrando que la funcionalidad y la elegancia pueden—y deben—coexistir."
+    },
+    "contact": {
+        "title": "Hablemos de tu proyecto",
+        "subtitle": "¿Listo para empezar? Estamos aquí para ayudarte a construir el futuro.",
+        "email_label": "daCode.dev",
+        "location_label": "Global Remote First",
+        "schedule_label": "Agendar una consulta",
+        "form": {
+            "name_placeholder": "Nombre",
+            "email_placeholder": "Email",
+            "phone_placeholder": "Teléfono",
+            "message_placeholder": "¿Cómo podemos ayudar?",
+            "submit_btn": "Enviar Mensaje"
+        }
+    },
+    "footer": {
+        "tagline": "Diseñando el futuro con precisión y elegancia.",
+        "col_services": "SERVICIOS",
+        "link_dev": "Desarrollo",
+        "link_cloud": "Cloud",
+        "link_consulting": "Consultoría",
+        "col_company": "EMPRESA",
+        "link_about": "Nosotros",
+        "link_contact": "Contacto",
+        "col_connect": "CONECTAR",
+        "copyright": "Copyright © {{year}} daCode. Todos los derechos reservados."
+    }
+}

@@ -1,60 +1,64 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaHistory, FaBullseye, FaEye } from "react-icons/fa";
+import { useTranslation, Trans } from "react-i18next";
 
 const Nosotros = () => {
+  const { t } = useTranslation();
+
   return (
-    <section
-    className="relative bg-gray-900 text-white py-20 px-6 bg-cover bg-center"
-    style={{ backgroundImage: "url(/assets/pexels.jpg)" }}
-  >
-    <div className="absolute inset-0 bg-black opacity-60"></div> {/* Capa oscura para mejorar la legibilidad */}
-    <div className="relative max-w-5xl mx-auto space-y-16">
-        {/* Historia */}
+    <section className="bg-brand-dark text-brand-text py-20 px-6 min-h-screen">
+      <div className="max-w-5xl mx-auto space-y-16">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-4">{t("about.title")}</h2>
+          <div className="w-20 h-1 bg-brand-accent mx-auto"></div>
+        </div>
+
+        {/* History */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="bg-gray-800 p-8 rounded-xl shadow-xl"
+          className="bg-brand-surface p-8 rounded-lg border border-gray-800"
         >
-          <h3 className="text-3xl font-bold text-cyan-400 mb-4 flex items-center gap-3">
-            <FaHistory className="text-4xl" /> Nuestra Historia
+          <h3 className="text-2xl font-bold text-brand-accent mb-4 flex items-center gap-3">
+            <FaHistory /> {t("about.story_title")}
           </h3>
-          <p className="text-gray-300 leading-relaxed">
-            Desde hace más de 17 años, <strong>Viewled</strong> ha liderado la transformación digital de espacios visuales en América Latina. Con una visión innovadora y compromiso por la excelencia, hemos desarrollado proyectos para las marcas más reconocidas de la región.
+          <p className="text-brand-muted leading-relaxed">
+            <Trans i18nKey="about.story_desc" components={{ 1: <strong /> }} />
           </p>
         </motion.div>
 
-        {/* Misión */}
+        {/* Mission */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="bg-gray-800 p-8 rounded-xl shadow-xl"
+          className="bg-brand-surface p-8 rounded-lg border border-gray-800"
         >
-          <h3 className="text-3xl font-bold text-cyan-400 mb-4 flex items-center gap-3">
-            <FaBullseye className="text-4xl" /> Nuestra Misión
+          <h3 className="text-2xl font-bold text-brand-accent mb-4 flex items-center gap-3">
+            <FaBullseye /> {t("about.mission_title")}
           </h3>
-          <p className="text-gray-300 leading-relaxed">
-            Brindar soluciones tecnológicas integrales en pantallas LED, LCD y sistemas de comunicación visual, enfocándonos en la personalización, innovación y soporte técnico de excelencia para nuestros clientes.
+          <p className="text-brand-muted leading-relaxed">
+            {t("about.mission_desc")}
           </p>
         </motion.div>
 
-        {/* Visión */}
+        {/* Vision */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="bg-gray-800 p-8 rounded-xl shadow-xl"
+          className="bg-brand-surface p-8 rounded-lg border border-gray-800"
         >
-          <h3 className="text-3xl font-bold text-cyan-400 mb-4 flex items-center gap-3">
-            <FaEye className="text-4xl" /> Nuestra Visión
+          <h3 className="text-2xl font-bold text-brand-accent mb-4 flex items-center gap-3">
+            <FaEye /> {t("about.vision_title")}
           </h3>
-          <p className="text-gray-300 leading-relaxed">
-            Ser la empresa líder en tecnología visual de Latinoamérica, reconocida por su innovación constante, adaptabilidad a medida y compromiso con la sustentabilidad y el diseño responsable.
+          <p className="text-brand-muted leading-relaxed">
+            {t("about.vision_desc")}
           </p>
         </motion.div>
       </div>

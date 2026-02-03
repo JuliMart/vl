@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
+import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const Contacto = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
-    nombre: "",
+    name: "",
     email: "",
-    telefono: "",
-    mensaje: "",
+    phone: "",
+    message: "",
   });
 
   const handleChange = (e) => {
@@ -18,91 +20,87 @@ const Contacto = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Formulario enviado:", formData);
-    // Aquí puedes integrar una API como EmailJS o Formspree
+    console.log("Form submitted:", formData);
   };
 
   return (
-    <section className="bg-white text-gray-800 px-6 py-16">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
-        {/* Información de contacto */}
-        <div className="space-y-6">
-          <h2 className="text-4xl font-extrabold text-cyan-600 mb-4">Contáctanos</h2>
-          <p className="text-lg text-gray-600">
-            ¿Tienes una consulta o querés cotizar un proyecto? Estamos para ayudarte.
+    <section className="bg-brand-dark text-brand-text px-6 py-24 min-h-screen">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-start">
+        {/* Contact Info */}
+        <div className="space-y-8">
+          <h2 className="text-4xl font-bold text-white">{t("contact.title")}</h2>
+          <p className="text-lg text-brand-muted">
+            {t("contact.subtitle")}
           </p>
 
-          <div className="space-y-4 text-gray-700 text-base">
-            <div className="flex items-center gap-3">
-              <FaEnvelope className="text-cyan-600" />
-              <span><strong>Email:</strong> contacto@viewled.com.ar</span>
+          <div className="space-y-6 text-brand-muted text-base">
+            <div className="flex items-center gap-4">
+              <FaEnvelope className="text-brand-accent text-xl" />
+              <span>{t("contact.email_label")}</span>
             </div>
-            <div className="flex items-center gap-3">
-              <FaPhoneAlt className="text-cyan-600" />
-              <span><strong>Teléfono:</strong> +54 9 221 4207919</span>
+            <div className="flex items-center gap-4">
+              <FaPhoneAlt className="text-brand-accent text-xl" />
+              <span>+56 930876984</span>
             </div>
-            <div className="flex items-center gap-3">
-              <FaMapMarkerAlt className="text-cyan-600" />
-              <span>
-                <strong>Ubicación:</strong> Bernardo de Irigoyen 722 3A, CABA - Buenos Aires, Argentina
-              </span>
+            <div className="flex items-center gap-4">
+              <FaMapMarkerAlt className="text-brand-accent text-xl" />
+              <span>{t("contact.location_label")}</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <FaCalendarAlt className="text-brand-accent text-xl" />
+              <button
+                className="text-white font-semibold hover:text-brand-accent transition"
+              >
+                {t("contact.schedule_label")}
+              </button>
             </div>
           </div>
-
-          <a
-            href="https://www.google.com/maps?q=Bernardo+de+Irigoyen+722,+Buenos+Aires,+Argentina"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block mt-6 bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-2 rounded-md transition"
-          >
-            Ver en Google Maps
-          </a>
         </div>
 
-        {/* Formulario de contacto */}
+        {/* Contact Form */}
         <form
           onSubmit={handleSubmit}
-          className="bg-gray-50 p-8 rounded-xl shadow-xl space-y-4"
+          className="bg-brand-surface p-8 rounded-lg shadow-2xl space-y-5 border border-gray-800"
         >
           <input
             type="text"
-            name="nombre"
-            placeholder="Nombre"
-            value={formData.nombre}
+            name="name"
+            placeholder={t("contact.form.name_placeholder")}
+            value={formData.name}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            className="w-full px-4 py-3 bg-brand-dark border border-gray-700 rounded-md text-white focus:outline-none focus:border-brand-accent transition"
           />
           <input
             type="email"
             name="email"
-            placeholder="Correo electrónico"
+            placeholder={t("contact.form.email_placeholder")}
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            className="w-full px-4 py-3 bg-brand-dark border border-gray-700 rounded-md text-white focus:outline-none focus:border-brand-accent transition"
           />
           <input
             type="tel"
-            name="telefono"
-            placeholder="Teléfono"
-            value={formData.telefono}
+            name="phone"
+            placeholder={t("contact.form.phone_placeholder")}
+            value={formData.phone}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            className="w-full px-4 py-3 bg-brand-dark border border-gray-700 rounded-md text-white focus:outline-none focus:border-brand-accent transition"
           />
           <textarea
-            name="mensaje"
-            placeholder="Escribe tu mensaje aquí..."
-            value={formData.mensaje}
+            name="message"
+            placeholder={t("contact.form.message_placeholder")}
+            value={formData.message}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-md h-32 resize-none focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            className="w-full px-4 py-3 bg-brand-dark border border-gray-700 rounded-md h-32 resize-none text-white focus:outline-none focus:border-brand-accent transition"
           />
           <button
             type="submit"
-            className="w-full bg-cyan-600 hover:bg-cyan-700 text-white py-3 rounded-md transition font-semibold"
+            className="w-full bg-brand-accent hover:bg-blue-600 text-white py-3 rounded-md transition font-semibold"
           >
-            Enviar Mensaje
+            {t("contact.form.submit_btn")}
           </button>
         </form>
       </div>

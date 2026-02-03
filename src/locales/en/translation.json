@@ -1,0 +1,91 @@
+{
+    "navbar": {
+        "services": "Services",
+        "about": "About",
+        "contact": "Contact",
+        "menu": "Menu"
+    },
+    "home": {
+        "hero_title": "Engineering the <1>Future</1>",
+        "hero_subtitle": "Sober, Elegant, Precise Software Solutions.",
+        "start_project": "Start a Project",
+        "services_title": "Our Expertise",
+        "view_all_services": "View All Services",
+        "trusted_by": "TRUSTED BY INNOVATORS",
+        "ready_to_scale": "Ready to scale?",
+        "ready_desc": "Let's build software that matters. Precision engineering for complex challenges.",
+        "get_in_touch": "Get in Touch",
+        "service_custom": {
+            "title": "Custom Development",
+            "desc": "Tailored software solutions built with precision and scalability in mind."
+        },
+        "service_mobile": {
+            "title": "Mobile Apps",
+            "desc": "Seamless native and cross-platform mobile experiences for iOS and Android."
+        },
+        "service_cloud": {
+            "title": "Cloud Infrastructure",
+            "desc": "Secure, reliable, and high-performance cloud architectures."
+        }
+    },
+    "services": {
+        "title": "Our Services",
+        "subtitle": "Comprehensive technology solutions delivered with precision and elegance.",
+        "learn_more": "Learn More →",
+        "custom_dev": {
+            "title": "Custom Software Development",
+            "desc": "We build tailored software solutions that align perfectly with your business goals. From concept to deployment, we ensure scalability and performance."
+        },
+        "mobile_dev": {
+            "title": "Mobile Application Development",
+            "desc": "Native and cross-platform mobile apps designed for optimal user experience and engagement on both iOS and Android devices."
+        },
+        "cloud_dev": {
+            "title": "Cloud Infrastructure & DevOps",
+            "desc": "Secure, scalable, and cost-effective cloud solutions. We handle migration, architecture, and ongoing management."
+        },
+        "consulting": {
+            "title": "IT Consulting & Strategy",
+            "desc": "Expert guidance on digital transformation, technology stack selection, and process optimization."
+        },
+        "ux_ui": {
+            "title": "UX/UI Design",
+            "desc": "User-centric design that combines aesthetics with functionality to create intuitive digital products."
+        }
+    },
+    "about": {
+        "title": "About daCode",
+        "story_title": "Our Story",
+        "story_desc": "Founded with a passion for precision engineering, <1>daCode</1> has evolved into a premier software development firm. We specialize in building robust, scalable, and elegant digital solutions for forward-thinking enterprises.",
+        "mission_title": "Our Mission",
+        "mission_desc": "To deliver software that is not just functional, but exceptional. We strive for code quality, architectural integrity, and user experiences that feel seamless and refined.",
+        "vision_title": "Our Vision",
+        "vision_desc": "To be the standard-bearer for engineering excellence in the software industry, proving that functionality and elegance can—and should—coexist."
+    },
+    "contact": {
+        "title": "Let's discuss your project",
+        "subtitle": "Ready to start? We are here to help you build the future.",
+        "email_label": "daCode.dev",
+        "location_label": "Global Remote First",
+        "schedule_label": "Schedule a consultation",
+        "form": {
+            "name_placeholder": "Name",
+            "email_placeholder": "Email",
+            "phone_placeholder": "Phone",
+            "message_placeholder": "How can we help?",
+            "submit_btn": "Send Message"
+        }
+    },
+    "footer": {
+        "tagline": "Engineering the future with precision and elegance.",
+        "col_services": "SERVICES",
+        "link_dev": "Development",
+        "link_cloud": "Cloud",
+        "link_consulting": "Consulting",
+        "col_company": "COMPANY",
+        "link_about": "About",
+        "link_contact": "Contact",
+        "col_connect": "CONNECT",
+        "copyright": "Copyright © {{year}} daCode. All rights reserved."
+    }
+}
